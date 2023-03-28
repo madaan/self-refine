@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="Self-Refine is a framework for iteratively improving outputs from LLMs through a process of iterative creation with feedback">
+    <meta name="keywords"
+        content="Feedback, Self-reflection, Chain of thought, few-shot prompting, gpt3, Refinement, symbolic reasoning, LLM, GPT4">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Self-Refine: Iterative Refinement with Self-Feedback</title>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="./static/css/prism.css">
+    <script src="./static/js/prism.js"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-coy.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-core.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.svg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- <script src="./static/js/results.js"></script> -->
+
+    <!--solution from https://stackoverflow.com/questions/23018619/make-text-in-select-element-wrap-when-too-long-->
+    <style>
+        .long_opt {
+            max-width: 100%;
+            white-space: normal;
+            text-overflow: ellipsis;
+        }
+    </style>
+    <script>
+        // toggle the visibility of the element with id "element_id"
+        function toggle_visibility(element_id) {
+            var e = document.getElementById(element_id);
+            if (e.style.display == 'block')
+                e.style.display = 'none';
+            else
+                e.style.display = 'block';
+        }
+
+    </script>
+    <!-- <script>
+        $(function () {
+            $("#outputs").load("./static/outputs.html");
+        });
+    </script> -->
+
+    <!--font awesome-->
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">Self-Refine: Iterative Refinement with Self-Feedback</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://madaan.github.io/">Aman Madaan</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://allenai.org/team/nikett/">Niket Tandon</a><sup>2</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://prakharguptaz.github.io/">Prakhar Gupta</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://skylerhallinan.com/">Skyler Hallinan</a><sup>3</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://luyug.github.io/">Luyu Gao</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://urialon.ml/">Uri Alon</a><sup>1</sup>,
+                                <span class="author-block">
+                                    <a href="https://sarahwie.github.io/">Sarah Wiegreffe</a><sup>2</sup>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://webdocs.cs.ualberta.ca/~dziri/">Nouha Dziri</a><sup>2</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                <a href="https://allenai.org/team/peterc">Peter Clark</a><sup>2</sup>,
+                            </span>
+
+                            <span class="author-block">
+                                <a href="https://www.cs.cmu.edu/~sprabhum/">Shrimai Prabhumoye
+                                </a><sup>4</sup>,
+                            </span>
+
+                            <span class="author-block">
+                                <a href="https://www.ayazdan.com/">Amir Yazdanbakhsh</a><sup>5</sup>,
+                            </span>
+
+                            <span class="author-block">
+                                <a href="https://www.majumderb.com/">Bodhisattwa Prasad Majumder
+                                </a><sup>2</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://shatu.github.io/">Shashank Gupta</a><sup>2</sup>
+                            </span>
+                            <span class="author-block">
+                                <a href="https://wellecks.com/">Sean Welleck</a><sup>2,3</sup>
+                            </span>
+                            <span class="author-block">
+                                <a href="https://www.cs.cmu.edu/~./yiming/">Yiming Yang</a><sup>1,2</sup>
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>Language Technologies Institute, School of CS,
+                                Carnegie Mellon University</span>
+                            <br />
+                            <span class="author-block"><sup>2</sup>Allen Institute for AI, <sup>3</sup>University of
+                                Washington,
+                                <sup>4</sup>NVIDIA Research,
+                                <sup>5</sup>Google Research, Brain Team </span>
+
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <span class="link-block">
+                                    <a href="" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                                <!-- Dataset Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="far fa-file"></i>
+                                        </span>
+                                        <span>Data</span>
+                                    </a>
+                                </span>
+                                <!-- Demo Link. -->
+                                <span class="link-block">
+                                    <a href="https://self-refine-webgen.herokuapp.com/"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fa fa-play"></i>
+                                        </span>
+                                        <span>Demo</span>
+                                    </a>
+                                </span>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <figure class="image is-8by6">
+                    <img src="static/images/autofb_fig1.png">
+                </figure>
+                <h2 class="subtitle has-text-centered">
+                    <span class="pal">Self-Refine</span> is a framework for iteratively improving outputs from LLMs
+                    through a process of iterative creation with feedback
+                    description.
+                </h2>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified is-size-4">
+
+                        <p> We present <b> <span class="pal">Self-Refine</span></b>: a novel approach that allows LLMs
+                            to iteratively refine outputs and
+                            incorporate feedback along multiple dimensions to improve performance on diverse tasks.
+                        </p>
+
+                        The gap between text generated by humans and large language models (LLMs) is gradually closing,
+                        with LLMs now capable of producing increasingly human-like text in quality and coherence.
+                        However, there are still significant differences in how humans and LLMs approach tasks, with
+                        humans able to refine their output based on feedback and
+                        self-reflection iteratively. To bridge this gap, we introduce SELF-REFINE, a framework for iteratively
+                        improving outputs from LLMs through iterative creation with feedback. The main idea
+                        is to generate output using an LLM; then allow the model to provide multi-aspect feedback for its
+                        own output; finally, the model refines its previously generated output given its own feedback. We
+                        experiment with 7 diverse tasks, ranging from review rewriting to math reasoning, demonstrating
+                        that our approach outperforms direct generation. In all tasks, outputs generated with SELF-REFINE
+                        are preferred by humans and by automated metrics over those generated directly with GPT-3.
+                        Additionally, SELF-REFINE outperforms strong baselines in acronym generation, dialogue
+                        response generation, and code readability, improving by 21.2% absolute points. Furthermore,
+                        our framework can potentially reduce the cost of human creative processes in
+                        real-world settings by showcasing its utility in applications like iterative website design.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Framework Description</h2>
+                    <div class="columns is-centered">
+                        <div class="column has-text-centered">
+                            <figure class="image">
+                                <img src="static/images/fig2.png">
+                            </figure>
+                            <figcaption>Given an input x, and an initial output y0, SELF-REFINE successively refines the output in a FEEDBACK → REFINE → FEEDBACK loop. It is assumed that the initial output y0 is produced by a generator model, which could be a specialized fine-tuned model or a few-shot prompted model.</figcaption>
+                        </div>
+                    </div>
+                    <div class="columns is-centered">
+                        <div class="column has-text-centered">
+                            <figure class="image">
+                                <img src="static/images/example1.png">
+                            </figure>
+                            <figcaption>Overview of SELF-REFINE: given an initial output (left), FEEDBACK evaluates it and generates actionable feedback required to correct it (center). The REFINE takes the feedback into account, and refines the output (right). For example, in the top row, an initial review with negative sentiment is first transformed into a positive one, then further refined through feedback. In the bottom row, an initial code snippet is provided, followed by feedback identifying a more efficient approach, and finally resulting in an optimized code implementation after applying the suggested improvements.</figcaption>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="section" id="results">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Results Summary</h2>
+                    <strong><span class="pal">Self-Refine</span> outperforms .</strong>
+
+                    <!--row1, colored objects-->
+                    <figure class="image is-64by64">
+                        <img src="https://user-images.githubusercontent.com/15002544/.png">
+                        <caption><strong>Result 1</strong></caption>
+                    </figure>
+                    <hr>
+                    <!--row2, math reasoning-->
+                    <figure class="image">
+                        <img src="https://user-images.githubusercontent.com/.png">
+                        <caption><strong>Result 2</strong></caption>
+                    </figure>
+                    <hr>
+
+                    <!--row3, algorithmic reasoning-->
+                    <figure>
+                        <img src="https://user-images.githubusercontent.com/15002544/.png" height="512" width="512">
+                        <br>
+                        <caption><strong>Result 3</strong></caption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>
+                <!--bibtex-->
+                @article{madaan2023refine,
+                    author = {},
+                    title = {Self-Refine: Iterative Refinement with Self-feedback},
+                    publisher = {arXiv},
+                    year = {2023},
+                  }
+</code></pre>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <a class="icon-link" href="https://arxiv.org/pdf/2211.10435.pdf">
+                    <i class="fas fa-file-pdf"></i>
+                </a>
+                <a class="icon-link" href="https://github.com/" class="external-link" disabled>
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            Template adapted from <a href="http://nerfies.github.io/">Nerfies</a> by Keunhong Park et
+                            al.
+                            and uses <a href="https://bulma.io/">Bulma</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

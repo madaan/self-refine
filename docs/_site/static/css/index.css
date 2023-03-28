@@ -1,0 +1,138 @@
+/* Change body font */
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+/* Increase font size and change color for icon links in footer */
+.footer .icon-link {
+  font-size: 28px;
+  color: #555;
+}
+
+/* Increase margins for links in link-block */
+.link-block a {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Make text in .pal class small-caps */
+.pal {
+  font-variant: small-caps;
+}
+
+/* Modify hero body padding in teaser */
+.teaser .hero-body {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+/* Change font for teaser */
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+/* Add background color to publication-title */
+.publication-title {
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Add box shadow to publication-banner */
+.publication-banner {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+/* Remove video object-fit and change position properties */
+.publication-banner video {
+  position: static;
+  left: 0;
+  top: 0;
+  transform: none;
+}
+
+/* Modify font for publication authors and venue */
+.publication-authors, .publication-venue {
+  font-family: 'Google Sans', sans-serif;
+}
+
+/* Change color for publication awards */
+.publication-awards {
+  color: #ff3860;
+  font-weight: bold;
+}
+
+/* Add underline to publication author links on hover */
+.publication-authors a:hover {
+  text-decoration: underline;
+}
+
+/* Add margin to author-block to separate multiple authors */
+.author-block {
+  margin-right: 10px;
+}
+
+/* Add border radius to publication-banner images */
+.publication-banner img {
+  border-radius: 5px;
+}
+
+/* Change color for publication video title */
+.publication-video h3 {
+  color: #333;
+}
+
+/* Add border radius to interpolation-panel and change background color */
+.interpolation-panel {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Add border radius to interpolation-image */
+.interpolation-panel .interpolation-image {
+  border-radius: 5px;
+}
+
+/* Add box shadow to results-carousel items */
+.results-carousel .item {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Change color for results-carousel item titles */
+.results-carousel .item h3 {
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+/* Add border radius to interpolation-slider */
+.interpolation-panel .slider {
+  border-radius: 5px;
+}
+
+/* Add margin to image wrapper */
+#interpolation-image-wrapper {
+  margin-bottom: 10px;
+}
+
+/* Add hover effect to social media icons */
+.social-media i:hover {
+  color: #4285f4;
+  cursor: pointer;
+}
+
+/* Add margin to publication header */
+.publication-header {
+  margin-bottom: 20px;
+}
+
+/* Add box shadow to sections */
+.section {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 
