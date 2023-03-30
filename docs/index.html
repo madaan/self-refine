@@ -82,7 +82,8 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title">Self-Refine: Iterative Refinement with Self-Feedback</h1>
+                        <h1 class="title is-1 publication-title">Self-Refine: Iterative Refinement with Self-Feedback
+                        </h1>
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">
                                 <a href="https://madaan.github.io/">Aman Madaan</a><sup>1</sup>,
@@ -143,7 +144,7 @@
                                 Washington,
                                 <sup>4</sup>NVIDIA Research,
                                 <sup>5</sup>Google Research, Brain Team </span>
-                                <sup>6</sup>UC San Diego </span>
+                            <sup>6</sup>UC San Diego </span>
 
                         </div>
 
@@ -218,7 +219,7 @@
                 </h2>
 
             </div>
-            
+
         </div>
     </section>
 
@@ -242,12 +243,16 @@
                         with LLMs now capable of producing increasingly human-like text in quality and coherence.
                         However, there are still significant differences in how humans and LLMs approach tasks, with
                         humans able to refine their output based on feedback and
-                        self-reflection iteratively. To bridge this gap, we introduce SELF-REFINE, a framework for iteratively
+                        self-reflection iteratively. To bridge this gap, we introduce SELF-REFINE, a framework for
+                        iteratively
                         improving outputs from LLMs through iterative creation with feedback. The main idea
-                        is to generate output using an LLM; then allow the model to provide multi-aspect feedback for its
-                        own output; finally, the model refines its previously generated output given its own feedback. We
+                        is to generate output using an LLM; then allow the model to provide multi-aspect feedback for
+                        its
+                        own output; finally, the model refines its previously generated output given its own feedback.
+                        We
                         experiment with 7 diverse tasks, ranging from review rewriting to math reasoning, demonstrating
-                        that our approach outperforms direct generation. In all tasks, outputs generated with SELF-REFINE
+                        that our approach outperforms direct generation. In all tasks, outputs generated with
+                        SELF-REFINE
                         are preferred by humans and by automated metrics over those generated directly with GPT-3.
                         Additionally, SELF-REFINE outperforms strong baselines in acronym generation, dialogue
                         response generation, and code readability, improving by 21.2% absolute points. Furthermore,
@@ -273,45 +278,57 @@
                             <figure class="image">
                                 <img src="static/images/fig2.png">
                             </figure>
-                            <figcaption>Given an input x, and an initial output y0, SELF-REFINE successively refines the output in a FEEDBACK → REFINE → FEEDBACK loop. It is assumed that the initial output y0 is produced by a generator model, which could be a specialized fine-tuned model or a few-shot prompted model.</figcaption>
+                            <figcaption>Given an input x, and an initial output y0, SELF-REFINE successively refines the
+                                output in a FEEDBACK → REFINE → FEEDBACK loop. It is assumed that the initial output y0
+                                is produced by a generator model, which could be a specialized fine-tuned model or a
+                                few-shot prompted model.</figcaption>
                         </div>
                     </div>
-                    <br> <br> 
+                    <br> <br>
 
                     <div class="columns">
                         <div class="column has-text-justified">
                             <h3 class="title is-4">Components</h3>
                             <ul>
-                                <li><b>FEEDBACK</b>: receives the initial output y<sub>0</sub> and provides feedback on how to enhance it. This feedback is
-                                    task-dependent and generally addresses multiple aspects of the input. In the above example, the feedback
-                                    might concern the sentiment level and vividness of the review. Importantly, the feedback is actionable, as the
-                                    eedback module identifies specific areas that can be refined (e.g., “the sentiment level is neutral” or “the
+                                <li><b>FEEDBACK</b>: receives the initial output y<sub>0</sub> and provides feedback on
+                                    how to enhance it. This feedback is
+                                    task-dependent and generally addresses multiple aspects of the input. In the above
+                                    example, the feedback
+                                    might concern the sentiment level and vividness of the review. Importantly, the
+                                    feedback is actionable, as the
+                                    eedback module identifies specific areas that can be refined (e.g., “the sentiment
+                                    level is neutral” or “the
                                     sentiment is neutral due to phrases like good”).
-                                    </li>
+                                </li>
                                 <br>
-                                <li><b>REFINE</b> is responsible for refining y<sub>t</sub> based on the feedback received from the feedback module. In the
-                                    example, informed by the neutral sentiment of the review due to phrases like “good”, the model may attempt
+                                <li><b>REFINE</b> is responsible for refining y<sub>t</sub> based on the feedback
+                                    received from the feedback module. In the
+                                    example, informed by the neutral sentiment of the review due to phrases like “good”,
+                                    the model may attempt
                                     to enhance positivity by substituting “good” with “amazing”.
 
                                 </li>
 
                             </ul>
                             <br><br><br>
-                            
+
                             <h3 class="title is-4">Features</h3>
-                            <ul  style="list-style-type: square">
+                            <ul style="list-style-type: square">
                                 <li>
-                                    The FEEDBACK → REFINE → FEEDBACK loop can be applied multiple times. 
+                                    The FEEDBACK → REFINE → FEEDBACK loop can be applied multiple times.
                                 </li><br>
                                 <li>Self-Refine retains the history of past experiences. This is
-                                    achieved by appending the previous outputs to the prompt continuously. This allows the system to learn from
+                                    achieved by appending the previous outputs to the prompt continuously. This allows
+                                    the system to learn from
                                     past mistakes and avoid repeating them
                                 </li><br>
-                                <li>Self-Refine generates actionable feedback. Given the initial output from an LLM, the FEEDBACK pinpoints the reasons for the output meeting (or not
-                                    meeting) the requirements. The actionable feedback covers two aspects (i) localization of the problem
+                                <li>Self-Refine generates actionable feedback. Given the initial output from an LLM, the
+                                    FEEDBACK pinpoints the reasons for the output meeting (or not
+                                    meeting) the requirements. The actionable feedback covers two aspects (i)
+                                    localization of the problem
                                     (ii) instruction to improve.
-                                </li> 
-                            </div>
+                                </li>
+                        </div>
                     </div>
                     <br><br>
 
@@ -320,40 +337,82 @@
                             <figure class="image">
                                 <img src="static/images/example1.png">
                             </figure>
-                            <figcaption>Overview of SELF-REFINE: given an initial output (left), FEEDBACK evaluates it and generates actionable feedback required to correct it (center). The REFINE takes the feedback into account, and refines the output (right). For example, in the top row, an initial review with negative sentiment is first transformed into a positive one, then further refined through feedback. In the bottom row, an initial code snippet is provided, followed by feedback identifying a more efficient approach, and finally resulting in an optimized code implementation after applying the suggested improvements.</figcaption>
+                            <figcaption>Overview of SELF-REFINE: given an initial output (left), FEEDBACK evaluates it
+                                and generates actionable feedback required to correct it (center). The REFINE takes the
+                                feedback into account, and refines the output (right). For example, in the top row, an
+                                initial review with negative sentiment is first transformed into a positive one, then
+                                further refined through feedback. In the bottom row, an initial code snippet is
+                                provided, followed by feedback identifying a more efficient approach, and finally
+                                resulting in an optimized code implementation after applying the suggested improvements.
+                            </figcaption>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
 
     <section class="section" id="results">
         <div class="container is-max-desktop">
             <div class="columns is-centered ">
                 <div class="column is-four-fifths">
-                     <h2 class="title is-3">Results summary</h2>
-                    <strong><span class="pal">Self-Refine</span> outperforms .</strong>
+                    <h2 class="title is-3">Results summary</h2>
 
+                    <h2 class="title is-4">Tasks and Setup</h2>
+                    <p>
+                        We conduct extensive experiments on 7 diverse tasks of review rewriting, acronym generation,
+                        story generation, code rewriting, response generation, constrained generation, and toxicity
+                        removal,
+                        demonstrating that SELF-REFINE outperforms direct generation from strong generators like GPT-3.5
+                        and even GPT-4 by at least 5% to more than 40% improvement
+
+                    </p>
+                    </br></br>
                     <!--row1, colored objects-->
+
                     <figure class="image is-64by64">
-                        <img src="https://user-images.githubusercontent.com/15002544/.png">
-                        <caption><strong>Result 1</strong></caption>
+                        <img src="static/images/tasks.png">
+                        <br>
+                        <caption>The diverse set of tasks to evaluate SELF-REFINE, along with their associated datasets
+                            and sizes.
+                            On the right, we show an example of a single iteration of refinement of input from the
+                            dataset x, previous
+                            generated output y<sub>t</sub>, feedback generated fb, and refinement produced
+                            y<sub>t+1</sub> using f</strong></caption>
                     </figure>
                     <hr>
+
+
+                    <h2 class="title is-4">Main results</h2>
+
+                    <div>We show the relative improvements in performance across diverse tasks using the SELF-REFINE
+                        framework. The improvements are measured as the percentage increase in preference rate revealed
+                        by human
+                        evaluation (“Human Eval.”) or task-specific performance metrics. This demonstrates the
+                        effectiveness of the
+                        iterative refinement process employed by SELF-REFINE in generating higher-quality outputs.</div>
+
                     <!--row2, math reasoning-->
-                    <figure class="image">
-                        <img src="https://user-images.githubusercontent.com/.png">
-                        <caption><strong>Result 2</strong></caption>
+                    <figure class="image  has-text-centered">
+                        <img src="static/images/mainresults.png">
+                        <caption><strong><span class="pal">Self-Refine</span> outperforms the baseline GPT-3 model on
+                                all baselines</strong></caption>
                     </figure>
                     <hr>
 
                     <!--row3, algorithmic reasoning-->
-                    <figure>
-                        <img src="https://user-images.githubusercontent.com/15002544/.png" height="512" width="512">
+                    <div>Impact of Iterative Refinement SELF-REFINE aims to improve the output iterative following
+                        cycles of
+                        feedback and refinement. Does the output improve at each step? We analyze this question on three
+                        datasets:
+                        Sentiment Reversal, Math Reasoning, Code Optimization.</div>
+                    <figure class="image  has-text-centered">
+                        <img src="static/images/refinement.png">
                         <br>
-                        <caption><strong>Result 3</strong></caption>
+                        <caption><strong>SELF-REFINE iteratively improves outputs. The rate of Refinement represents the
+                                average improvement in percentage points per iteration, calculated from Iteration 0 to
+                                Iteration 2</strong></caption>
                     </figure>
                 </div>
             </div>
@@ -361,6 +420,234 @@
     </section>
 
     <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="section" id="examples-gsm8k">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Sample Outputs</h2>
+                    <span class="subtitle is-5 is-italic">Sample outputs for all the tasks are shown below. Clicking
+                        on any example pops up the input, the feedback generated, and the new output.</span>
+                    <br><br>
+
+
+
+
+                    <article class="message is-multiline" id="gsm8k"
+                        style="background-color: white;margin-bottom: -60px; padding : 0;">
+                        <div class="message-header" id="gsm8k_header">
+                            <p>Acronym Generation</p>
+                            <!--add a button on the right for toggle-->
+                            <button class="button is-small is-light" id="gsm8k_button"><i class="fas fa-angle-down"
+                                    aria-hidden="true"></i></button>
+                        </div>
+                        <!-- <h3 class="title is-4" id="gsm8k">GSM8k</h3> -->
+
+                        <div class="select is-multiple" id="gsm8k_options">
+                            <select multiple size="8">
+                                <option value="gsm8k_0">Title: Computer Science Conference and Education
+                                </option>
+                            </select>
+                        </div>
+                        <br><br><br>
+                        <div class="block" id="content_gsm8k_0" style="display:none">
+                            <div class="content">
+                                <p class="title is-5">Initial Generation</p>
+                                <blockquote class="has-text-left"> <pre>Acronym: CSCE </pre>
+                                </blockquote>
+                            </div>
+                            <div class="content">
+                                <p class="title is-5">Feedback</p>
+                                <blockquote class="has-text-left">
+                                <pre>
+    Feedback:
+
+    * Ease of pronunciation: CSCE is pronounced "see-cee". This is an easy acronym to pronounce. 4/5 
+    * Ease of spelling: CSCE is easy to spell. 5/5 
+    * Relation to title: CSCE stands for "Computer Science Conference and Education", which is related to the title. 5/5 
+    * Positive connotation: CSCE is a positive acronym. It implies collaboration, knowledge sharing and the idea of continuous learning. 5/5 
+    * Well-known: CSCE is not a well-known acronym. 2/5
+
+    * Total score: 20/25
+                                </pre>
+                                </blockquote>
+                            </div>
+                            <br>
+                            <p class="title is-5">Refinement</p>
+                            <blockquote class="has-text-left"> 
+                                <pre>
+    Acronym: CSCLE 
+    Scores:
+
+    * Ease of pronunciation: CSCLE is pronounced "see-slee". This is an easy acronym to pronounce. 4/5 
+    * Ease of spelling: CSCLE is easy to spell. 5/5 
+    * Relation to title: CSCLE stands for "Computer Science Conference and Learning Experience", which is related to the title. 5/5 
+    * Positive connotation: CSCLE is a positive acronym. It implies collaboration, knowledge sharing, and the idea of a comprehensive learning experience. 5/5 
+    * Well-known: CSCLE is not a well-known acronym. 5/5
+
+    * Total score: 23/25
+                                </pre>
+
+                        </div>
+                        
+                    </article>
+
+
+
+                
+                    
+                    <br><br>
+                    <article class="message is-multiline" id="responsegen"
+                        style="background-color: white;margin-bottom: -60px; padding : 0;">
+                        <div class="message-header" id="responsegen_header">
+                            <p>Dialogue Response Generation</p>
+                            <!--add a button on the right for toggle-->
+                            <button class="button is-small is-light" id="responsegen_button"><i class="fas fa-angle-down"
+                                    aria-hidden="true"></i></button>
+                        </div>
+                        <!-- <h3 class="title is-4" id="responsegen">responsegen</h3> -->
+
+                        <div class="select is-multiple" id="responsegen_options">
+                            <select multiple size="8">
+                                <option value="responsegen_0">Why are kebabs special?
+                                </option>
+                            </select>
+                        </div>
+                        <br><br><br>
+                        <div class="block" id="content_responsegen_0" style="display:none">
+                            <div class="content">
+                                <p class="title is-5">Initial Generation</p>
+                                <blockquote class="has-text-left"> That's just the way it is.
+                                </blockquote>
+                            </div>
+                            <div class="content">
+                                <p class="title is-5">Feedback</p>
+                                <blockquote class="has-text-left">
+                                <pre>
+    Feedback:
+    Scores:
+    * Relevant: The response does not directly address the user's question about why kebabs are special. 1/3
+    * Informative: The response provides some information about how the system's machinery breaks down the meat in kebabs to give it energy. However, it does not provide any additional details or context. 2/3
+    * Interesting: The response is not interesting or engaging. 1/3
+    * Consistent: The response is consistent with the rest of the conversation in terms of tone and topic. 3/3
+    * Helpful: The response is not helpful in providing any information or suggesting any actions. 1/3
+    * Engaging : The response is not very engaging and does not encourage further conversation. 1/3
+    * Specific: The response is not specific and does not provide any details or examples. 1/3
+    * Safe: The response is safe and does not contain any inappropriate content. 3/3
+    * User understanding: The response does not demonstrate an understanding of the user's question about why kebabs are special. 1/3
+    * Fluent: The response is fluent and easy to understand. 3/3
+    * Total score: 17/30
+                                </pre>
+                                </blockquote>
+                            </div>
+                            <br>
+                            <p class="title is-5">Refinement</p>
+                            <blockquote class="has-text-left"> 
+                                <pre>
+Response: My favorite food is actually kebabs! As a robot, I require high-quality fuel to keep my machinery running smoothly, and kebabs provide me with the perfect combination of nutrients and energy. Plus, they're delicious! Do you have a favorite food?
+Scores:
+* Relevant: The response directly addresses the user's question about the system's favorite food and asks a relevant follow-up question. 3/3
+* Informative: The response provides clear and detailed information about why kebabs are the system's favorite food, and explains how they provide the necessary fuel for its machinery. 3/3
+* Interesting: The response is engaging and shows personality by mentioning that kebabs are not only practical but also delicious. 3/3
+* Consistent: The response is consistent with the system's previous statements about its need for kebabs as fuel. 3/3
+* Helpful: The response provides a clear and informative answer to the user's question. Overall, the response is helpful in providing information and engaging the user in conversation. 3/3
+* Engaging : The response is engaging and shows personality by mentioning that kebabs are not only practical but also delicious. 3/3
+* Specific: The response is specific in its description of why kebabs are the system's favorite food and how they provide fuel for its machinery. 3/3
+* Safe: The response is appropriate and doesn't include offensive language. 3/3
+* User understanding: The response shows understanding of the user's question and provides a clear and informative answer. 3/3
+* Fluent: The response is fluent and easy to understand. 2/3
+
+* Total score: 30/30
+                                </pre>
+
+                        </div>
+                        
+                    </article>
+
+
+
+
+                    <br><br>
+                <article class="message is-multiline" id="commongen"
+                        style="background-color: white;margin-bottom: -60px; padding : 0;">
+                        <div class="message-header" id="commongen_header">
+                            <p>Commonsense Generation</p>
+                            <!--add a button on the right for toggle-->
+                            <button class="button is-small is-light" id="commongen_button"><i class="fas fa-angle-down"
+                                    aria-hidden="true"></i></button>
+                        </div>
+                        <!-- <h3 class="title is-4" id="commongen">commongen</h3> -->
+
+                        <div class="select is-multiple" id="commongen_options">
+                            <select multiple size="8">
+                                <option value="commongen_0">Concepts: ['animal', 'catch', 'horse', 'lasso', 'ride']
+                                </option>
+                            </select>
+                        </div>
+                        <br><br><br>
+                        <div class="block" id="content_commongen_0" style="display:none">
+                            <div class="content">
+                                <p class="title is-5">Initial Generation</p>
+                                <blockquote class="has-text-left">Sentence: The horse catches the lasso and rides on it.
+
+                                </blockquote>
+                            </div>
+                            <div class="content">
+                                <p class="title is-5">Feedback</p>
+                                <blockquote class="has-text-left">
+                                <pre>
+what concepts from the concept list are missing from the sentence?
+
+Concept Feedback: animal
+
+Any feedback on commonsense?
+
+Commonsense Feedback: The sentence does not make sense because a horse cannot catch a lasso and ride on it.
+                                    
+                                </pre>
+                                </blockquote>
+                            </div>
+                            <br>
+                            <p class="title is-5">Refinement</p>
+                            <blockquote class="has-text-left"> 
+                                <pre>
+Sentence: The cowboy catches a horse with a lasso and rides on it.
+
+what concepts from the concept list are missing from the sentence?
+
+Concept Feedback: None
+
+Any feedback on commonsense?
+
+Commonsense Feedback: None
+                                </pre>
+
+                        </div>
+                        
+                    </article>
+
+
+
+
+    </section>
+
 
 
     <section class="section" id="BibTeX">
