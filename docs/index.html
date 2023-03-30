@@ -202,15 +202,23 @@
     <section class="hero teaser">
         <div class="container is-max-desktop">
             <div class="hero-body">
+                <div class="content has-text-justified is-size-4">
+                    SELF-REFINE is a novel approach that allows LLMs to iteratively refine outputs and
+                    incorporate feedback along multiple dimensions to improve performance on diverse tasks. Unlike
+                    prior work, it does not require supervised training data or reinforcement learning, and
+                    works with a single LLM.
+                </div>
                 <figure class="image is-8by6">
-                    <img src="static/images/autofb_fig1.png">
+                    <img src="static/images/autofb_animation.gif">
                 </figure>
                 <h2 class="subtitle has-text-centered">
-                    <span class="pal">Self-Refine</span> is a framework for iteratively improving outputs from LLMs
+                    <span class="pal">Self-Refine</span> iteratively improves outputs from LLMs
                     through a process of iterative creation with feedback
                     description.
                 </h2>
+
             </div>
+            
         </div>
     </section>
 
@@ -261,12 +269,52 @@
                     <h2 class="title is-3">Framework Description</h2>
                     <div class="columns is-centered">
                         <div class="column has-text-centered">
+                            <br>
                             <figure class="image">
                                 <img src="static/images/fig2.png">
                             </figure>
                             <figcaption>Given an input x, and an initial output y0, SELF-REFINE successively refines the output in a FEEDBACK → REFINE → FEEDBACK loop. It is assumed that the initial output y0 is produced by a generator model, which could be a specialized fine-tuned model or a few-shot prompted model.</figcaption>
                         </div>
                     </div>
+                    <br> <br> 
+
+                    <div class="columns">
+                        <div class="column has-text-justified">
+                            <h3 class="title is-4">Components</h3>
+                            <ul>
+                                <li><b>FEEDBACK</b>: receives the initial output y<sub>0</sub> and provides feedback on how to enhance it. This feedback is
+                                    task-dependent and generally addresses multiple aspects of the input. In the above example, the feedback
+                                    might concern the sentiment level and vividness of the review. Importantly, the feedback is actionable, as the
+                                    eedback module identifies specific areas that can be refined (e.g., “the sentiment level is neutral” or “the
+                                    sentiment is neutral due to phrases like good”).
+                                    </li>
+                                <br>
+                                <li><b>REFINE</b> is responsible for refining y<sub>t</sub> based on the feedback received from the feedback module. In the
+                                    example, informed by the neutral sentiment of the review due to phrases like “good”, the model may attempt
+                                    to enhance positivity by substituting “good” with “amazing”.
+
+                                </li>
+
+                            </ul>
+                            <br><br><br>
+                            
+                            <h3 class="title is-4">Features</h3>
+                            <ul  style="list-style-type: square">
+                                <li>
+                                    The FEEDBACK → REFINE → FEEDBACK loop can be applied multiple times. 
+                                </li><br>
+                                <li>Self-Refine retains the history of past experiences. This is
+                                    achieved by appending the previous outputs to the prompt continuously. This allows the system to learn from
+                                    past mistakes and avoid repeating them
+                                </li><br>
+                                <li>Self-Refine generates actionable feedback. Given the initial output from an LLM, the FEEDBACK pinpoints the reasons for the output meeting (or not
+                                    meeting) the requirements. The actionable feedback covers two aspects (i) localization of the problem
+                                    (ii) instruction to improve.
+                                </li> 
+                            </div>
+                    </div>
+                    <br><br>
+
                     <div class="columns is-centered">
                         <div class="column has-text-centered">
                             <figure class="image">
@@ -283,9 +331,9 @@
 
     <section class="section" id="results">
         <div class="container is-max-desktop">
-            <div class="columns is-centered has-text-centered">
+            <div class="columns is-centered ">
                 <div class="column is-four-fifths">
-                    <h2 class="title is-3">Results Summary</h2>
+                     <h2 class="title is-3">Results summary</h2>
                     <strong><span class="pal">Self-Refine</span> outperforms .</strong>
 
                     <!--row1, colored objects-->
