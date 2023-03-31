@@ -331,7 +331,29 @@
                         </div>
                     </div>
                     <br><br>
-
+                    <br>
+                    <div class="box has-background-light">
+                        <pre><code class="language-python">
+                    def self_refine(prompt: str) -> str:
+                        def is_refinement_sufficient(prompt, feedback, initial, refined) -> bool:
+                            # Define stopping criteria here
+                            pass
+                    
+                        answer = ChatGPT(prompt)
+                    
+                        while True:
+                            feedback = ChatGPT(feedback_prompt, answer)
+                            refined = ChatGPT(refiner_prompt, feedback, answer)
+                    
+                            if is_refinement_sufficient(prompt, feedback, answer, refined):
+                                break
+                    
+                            answer = refined
+                    
+                        return refined
+                        </code></pre>
+                    </div>
+                    
                     <div class="columns is-centered">
                         <div class="column has-text-centered">
                             <figure class="image">
