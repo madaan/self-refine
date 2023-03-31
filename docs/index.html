@@ -334,6 +334,8 @@
                     <br><br>
                     <br>
                     <div class="box has-background-light">
+                        <h2 class="title is-3">Adding a new task</h2>
+                        Adding a new task to SELF-REFINE is straightforward. The following code snippet shows the basic structure of the SELF-REFINE framework. The FEEDBACK and REFINE modules are task-dependent and can be implemented in a variety of ways. The is_refinement_sufficient function defines the stopping criteria for the iterative process. The function is_refinement_sufficient is also task-dependent and can be implemented in a variety of ways. 
                         <pre><code class="language-python">
                     def self_refine(prompt: str) -> str:
                         def is_refinement_sufficient(prompt, feedback, initial, refined) -> bool:
