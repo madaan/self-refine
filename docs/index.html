@@ -152,7 +152,7 @@
                             <div class="publication-links">
                                 <!-- PDF Link. -->
                                 <span class="link-block">
-                                    <a href="" class="external-link button is-normal is-rounded is-dark">
+                                    <a href="https://github.com/madaan/self-refine/blob/main/docs/view.pdf" class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="fas fa-file-pdf"></i>
                                         </span>
@@ -331,7 +331,29 @@
                         </div>
                     </div>
                     <br><br>
-
+                    <br>
+                    <div class="box has-background-light">
+                        <pre><code class="language-python">
+                    def self_refine(prompt: str) -> str:
+                        def is_refinement_sufficient(prompt, feedback, initial, refined) -> bool:
+                            # Define stopping criteria here
+                            pass
+                    
+                        answer = ChatGPT(prompt)
+                    
+                        while True:
+                            feedback = ChatGPT(feedback_prompt, answer)
+                            refined = ChatGPT(refiner_prompt, feedback, answer)
+                    
+                            if is_refinement_sufficient(prompt, feedback, answer, refined):
+                                break
+                    
+                            answer = refined
+                    
+                        return refined
+                        </code></pre>
+                    </div>
+                    
                     <div class="columns is-centered">
                         <div class="column has-text-centered">
                             <figure class="image">
