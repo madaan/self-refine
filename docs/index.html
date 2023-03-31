@@ -152,7 +152,8 @@
                             <div class="publication-links">
                                 <!-- PDF Link. -->
                                 <span class="link-block">
-                                    <a href="https://github.com/madaan/self-refine/blob/main/docs/view.pdf" class="external-link button is-normal is-rounded is-dark">
+                                    <a href="https://github.com/madaan/self-refine/blob/main/docs/view.pdf"
+                                        class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="fas fa-file-pdf"></i>
                                         </span>
@@ -353,7 +354,7 @@
                         return refined
                         </code></pre>
                     </div>
-                    
+
                     <div class="columns is-centered">
                         <div class="column has-text-centered">
                             <figure class="image">
@@ -621,8 +622,8 @@ Scores:
                         <div class="message-header" id="commongen_header">
                             <p>Commonsense Generation</p>
                             <!--add a button on the right for toggle-->
-                            <button class="button is-small is-light" id="commongen_button"><i
-                                    class="fas fa-angle-down" aria-hidden="true"></i></button>
+                            <button class="button is-small is-light" id="commongen_button"><i class="fas fa-angle-down"
+                                    aria-hidden="true"></i></button>
                         </div>
                         <div class="block" id="commongen_content" style="display:none">
 
@@ -684,8 +685,8 @@ Commonsense Feedback: None
                         <div class="message-header" id="gsm_header">
                             <p>GSM Generation</p>
                             <!--add a button on the right for toggle-->
-                            <button class="button is-small is-light" id="gsm_button"><i
-                                    class="fas fa-angle-down" aria-hidden="true"></i></button>
+                            <button class="button is-small is-light" id="gsm_button"><i class="fas fa-angle-down"
+                                    aria-hidden="true"></i></button>
                         </div>
                         <div class="block" id="gsm_content" style="display:none">
 
@@ -773,7 +774,7 @@ def solution():
                     </article>
 
 
-                    
+
                     <br><br>
                     <article class="message is-multiline" id=""
                         style="background-color: white;margin-bottom: -60px; padding : 0;">
@@ -844,7 +845,7 @@ print('Yes' if flag else 'No')
                     </article>
 
 
-                    
+
                     <br><br>
                     <article class="message is-multiline" id=""
                         style="background-color: white;margin-bottom: -60px; padding : 0;">
@@ -900,15 +901,15 @@ Now fix the code.
                     </article>
 
 
-                    
+
                     <br><br>
                     <article class="message is-multiline" id=""
                         style="background-color: white;margin-bottom: -60px; padding : 0;">
                         <div class="message-header" id="sentiment_header">
                             <p>Sentiment</p>
                             <!--add a button on the right for toggle-->
-                            <button class="button is-small is-light" id="sentiment_button"><i
-                                    class="fas fa-angle-down" aria-hidden="true"></i></button>
+                            <button class="button is-small is-light" id="sentiment_button"><i class="fas fa-angle-down"
+                                    aria-hidden="true"></i></button>
                         </div>
                         <div class="block" id="sentiment_content" style="display:none">
 
@@ -919,7 +920,7 @@ Task: Rewrite this review to have a Negative sentiment.
 Input: If you're looking for a truly magical experience in Vegas, look no further than the Trop! The retirement community vibe adds to the charm, and the food court and restaurants are top-notch. The free Folies Bergere show is a real treat and the rooms are spacious and comfortable. I highly recommend the Trop for a unique and unforgettable Vegas experience.                        </pre>
                                 </blockquote>
                                 <p class="title is-5">Initial Generation</p>
-                                <blockquote class="has-text-left"> 
+                                <blockquote class="has-text-left">
                                     <pre>
 If you're looking for a good experience in Vegas, the Trop may be the perfect place for you. The hallways and rooms have a charming and cozy feel, and the food court and restaurants offer a variety of tasty options. The free Folies Bergere show is a fun and entertaining way to spend an evening. Overall, it's a great value and an enjoyable stay.
                                 </pre>
@@ -955,9 +956,52 @@ Very negative: If you ever wondered where the magic of Vegas crawled into a hole
 
 
     </section>
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Related Work</h2>
+                    Iterative refinement with self-feedback is a promising approach to improve large language models
+                    (LLMs).
+                    Many recent and concurrent works
+                    have explored this idea from different perspectives and applications - please checkout the twitter list below. 
+                     These works are all important and relevant to our research, as they show the potential and challenges of
+                    using LLMs as both generators and evaluators of their own outputs.
+                </div>
 
+              
+            </div>
+            <div class="centerdiv">
+            <div class="tweets-container">
+                <div class="tweet">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">A Self-Reflecting LLM Agent<br><br>Equips LLM-based agent w/ <br>-dynamic memory<br>-a self-reflective LLM<br>-a method for detecting hallucinations<br><br>Challenge agent to learn from its own mistakes<br><br>-Evaluate on knowledge-intensive tasks<br>-Outperforms ReAct agents<br><br>Paper: <a href="https://t.co/URsJWbkwmj">https://t.co/URsJWbkwmj</a> <a href="https://t.co/WfNcPQvIs6">pic.twitter.com/WfNcPQvIs6</a></p>&mdash; John Nay (@johnjnay) <a href="https://twitter.com/johnjnay/status/1638696539257184258?ref_src=twsrc%5Etfw">March 23, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="tweet">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Language Models can Solve Computer Tasks<br><br>abs: <a href="https://t.co/oj8HjxkixC">https://t.co/oj8HjxkixC</a> <a href="https://t.co/J8jCrqAAnZ">pic.twitter.com/J8jCrqAAnZ</a></p>&mdash; AK 🤗 in SF for the Open-Source AI meetup (@_akhaliq) <a href="https://twitter.com/_akhaliq/status/1641697534363017217?ref_src=twsrc%5Etfw">March 31, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="tweet">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">LLM Agents Can Recursively Criticize &amp; Improve Outputs<br><br>-Simple prompt to review &amp; improve can beat:<br>Reinforcement Learning<br>Supervised Learning<br>CoT prompting<br><br>-Only needs a few demos per task, rather than thousands<br>-No task-specific reward function needed<a href="https://t.co/Ec0x86jXb0">https://t.co/Ec0x86jXb0</a> <a href="https://t.co/I9W9ZFkURf">pic.twitter.com/I9W9ZFkURf</a></p>&mdash; John Nay (@johnjnay) <a href="https://twitter.com/johnjnay/status/1641786389267185664?ref_src=twsrc%5Etfw">March 31, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="tweet">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Improving Code Generation by Training with Natural Language Feedback <br><br>abs: <a href="https://t.co/cGJyR94RHU">https://t.co/cGJyR94RHU</a> <br>github: <a href="https://t.co/lkQKuuiZ6c">https://t.co/lkQKuuiZ6c</a> <a href="https://t.co/2Oyl9jVpmg">pic.twitter.com/2Oyl9jVpmg</a></p>&mdash; AK 🤗 in SF for the Open-Source AI meetup (@_akhaliq) <a href="https://twitter.com/_akhaliq/status/1641253694829207554?ref_src=twsrc%5Etfw">March 30, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="tweet">
+                    <blockquote class="twitter-tweet">
+                        <p lang="en" dir="ltr">CAI lets us fix mistakes with AI behavior or specifically target new
+                            goals in just a few days, simply by changing the instructions we provide - it’s much more
+                            efficient than finetuning on large RLHF datasets. <a
+                                href="https://t.co/ptm1wwt3yv">pic.twitter.com/ptm1wwt3yv</a></p>&mdash; Anthropic
+                        (@AnthropicAI) <a
+                            href="https://twitter.com/AnthropicAI/status/1603791173772275712?ref_src=twsrc%5Etfw">December
+                            16, 2022</a>
+                    </blockquote>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
 
-
+            </div>
+        </div>
+    </div>
+    </section>
     <section class="section" id="BibTeX">
         <div class="container is-max-desktop content">
             <h2 class="title">BibTeX</h2>

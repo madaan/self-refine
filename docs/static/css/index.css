@@ -155,3 +155,24 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+.tweets-container {
+
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 400px;
+  overflow-y: scroll;
+  border-left: 1px solid #ccc;
+  padding: 0px;
+  
+}
+
+.tweet {
+  margin-bottom: 50px;
+}
+
+.centerdiv {
+  display: grid;
+  place-items: center;
+}
