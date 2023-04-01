@@ -16,7 +16,14 @@ body {
 .pal {
   font-variant: small-caps;
 }
-
+.box {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1em;
+  margin-bottom: 1em;
+  overflow: auto; /* Add this line to enable scrolling */
+}
 
 .teaser .hero-body {
   padding-top: 0;
@@ -154,4 +161,88 @@ body {
 }
 #interpolation-image-wrapper img {
   border-radius: 5px;
+}
+
+.tweets-container {
+
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 400px;
+  overflow-y: scroll;
+  border-left: 1px solid #ccc;
+  padding: 0px;
+  
+}
+
+.tweet {
+  margin-bottom: 50px;
+}
+
+.centerdiv {
+  display: grid;
+  place-items: center;
+}
+
+
+
+
+/* CSS for the examples */
+
+.message {
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.message-header {
+  background-color: #f5f5f5;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+
+.message-header {
+  background-color: #f5f5f5;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  color: #333333; /* or any other darker shade you prefer */
+}
+
+
+.has-text-left pre {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.title.is-5 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600; /* Increased font weight for better visibility */
+}
+
+#acronym_content {
+  padding: 1.5rem;
+}
+
+.block:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+
+code.python {
+  display: block;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-x: auto;
+  padding: 20px;
+}
+
+code.python {
+  color: #008000;
 }

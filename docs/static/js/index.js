@@ -70,23 +70,31 @@ $(document).ready(function() {
         }
     }
 
-    $('#gsm8k_button').click(function() {
-        toggle_options('#gsm8k_header', '#gsm8k_options');
+    $('#acronym_button').click(function() {
+        toggle_options('#acronym_header', '#acronym_content');
     });
-    $('#gsm8khard_button').click(function() {
-        toggle_options('#gsm8khard_header', '#gsm8khard_options');
+    $('#responsegen').click(function() {
+        toggle_options('#responsegen_header', '#responsegen_content');
+    });
+    $('#commongen_button').click(function() {
+        toggle_options('#commongen_header', '#commongen_content');
     }
     );
-    $('#coloredobjects_button').click(function() {
-        toggle_options('#coloredobjects_header', '#coloredobjects_options');
+    $('#gsm_button').click(function() {
+        toggle_options('#gsm_header', '#gsm_content');
     }
     );
-    $('#repeatcopy_button').click(function() {
-        toggle_options('#repeatcopy_header', '#repeatcopy_options');
+    $('#codeoptimization_button').click(function() {
+        toggle_options('#codeoptimization_header', '#codeoptimization_content');
     }
     );
-    $('#dateunderstanding_button').click(function() {
-        toggle_options('#dateunderstanding_header', '#dateunderstanding_options');
+    $('#sentiment_button').click(function() {
+        toggle_options('#gsentiment_header', '#sentiment_content');
+    }
+    );
+    
+    $('#readibility_button').click(function() {
+        toggle_options('#readibility_header', '#readibility_content');
     }
     );
 
