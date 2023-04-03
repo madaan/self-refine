@@ -1,6 +1,7 @@
 import sys
 from typing import Dict, List
 from src.utils import Prompt
+import pandas as pd
 
 from prompt_lib.backends import openai_api
 
@@ -18,7 +19,7 @@ class AcronymGenTaskIterate(Prompt):
         self.prompt = self.make_prompt(prompt_examples=prompt_examples)
 
     def make_prompt(self, prompt_examples: str) -> str:
-        import pandas as pd
+        
         prompt_examples = pd.read_json(prompt_examples, orient="records", lines=True)
         # group on example
         grouped = prompt_examples.groupby("example")
@@ -138,5 +139,5 @@ Okay, let's use this feedback to improve the acronym.
     
 
 if __name__ == "__main__":
-    obj = AcronymGenTaskIterate(prompt_examples="data/prompt/acronym/feedback.v2.jsonl", engine="whatever")
+    obj = AcronymGenTaskIterate(prompt_examples="data/prompt/acronym/feedback.jsonl", engine="whatever")
     print(obj.prompt)
