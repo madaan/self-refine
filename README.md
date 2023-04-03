@@ -13,7 +13,7 @@ _Can LLMs enhance their own output without our guidance? In some cases, yes! Wit
 
 ## Setup
 
-* We use prompt-lib for querying LLMs. You can install `prompt-lib` by running the following commands:
+* We use [prompt-lib](https://github.com/reasoning-machines/prompt-lib) for querying LLMs. You can install `prompt-lib` by running the following commands:
 
 ```sh
 !git clone https://github.com/reasoning-machines/prompt-lib
