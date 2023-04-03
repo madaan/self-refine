@@ -86,7 +86,7 @@ Acronym: {acronym}"""
 if __name__ == "__main__":
     feedback = AcronymGenFeedback(
         engine="davinci-code-002",
-        prompt_examples="data/prompt/acronym/feedback.v2.jsonl",
+        prompt_examples="data/prompt/acronym/feedback.jsonl",
     )
     
     print(feedback.prompt)
