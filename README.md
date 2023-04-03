@@ -2,11 +2,10 @@
 
 _Can LLMs enhance their own output without our guidance? In some cases, yes! With Self-Refine, LLMs can generate feedback on their work, use it to improve the output, and repeat this process._
 
-![image](https://raw.githubusercontent.com/madaan/self-refine/main/docs/static/images/autofb_animation.gif)
+![image](https://raw.githubusercontent.com/madaan/self-refine/main/docs/static/images/animation_oldstyle_oneloop.gif)
 
 
 ## [Website](https://selfrefine.info), [Paper](https://arxiv.org/pdf/2303.17651.pdf)
-
 
 
 <hr>
