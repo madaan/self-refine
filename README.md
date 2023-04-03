@@ -1,10 +1,17 @@
 # Self-Refine: Iterative Refinement with Self-Feedback
-Self correcting loop for generation tasks
 
+### Can LLMs enhance their own output without our guidance? In some cases, yes! With [Self-Refine](https://arxiv.org/pdf/2303.17651.pdf), LLMs can generate feedback on their work, use it to improve the output, and repeat this process.
 
 ![image](https://raw.githubusercontent.com/madaan/self-refine/main/docs/static/images/autofb_animation_static.gif)
 
-### Setup
+
+## [website](https://selfrefine.info), [paper](https://arxiv.org/pdf/2303.17651.pdf)
+
+
+
+<hr>
+
+## Setup
 
 * We use prompt-lib for querying LLMs. You can install `prompt-lib` by running the following commands:
 
@@ -19,7 +26,7 @@ Depending on your default settings, you may want to use the following to set a P
 export PYTHONPATH=".:../:.:src:../:../../:.:prompt-lib"
 ```
 
-### Getting Started with iterative acronym generation
+## Getting Started with iterative acronym generation
 
 
 ```sh
@@ -62,30 +69,15 @@ python -u src/acronym/run.py "Using language models of code for few-shot commons
 * Total score: 21/25
 ```
 
-
-
-### Commongen
-
-* We use a hard version of commongen. The data is located in `data/prompts/commongen`. You can download the data by running the following commands:
-
-```sh
-python -u src/commongen/run.py cmd stair bubble team dryer puppy aliens cat 
-```
-
-### Dialogue Response generation
+## Dialogue Response generation
 
 ```sh
 PYTHONPATH="." python -u src/responsegen/run.py --output <OUTPUT FILE> --size <DATA SIZE>
 ```
 Use size 0 for running on all test instances
 
-### Dialogue
 
-```sh
-PYTHONPATH="." python -u src/dialogue/run.py --output <OUTPUT FILE> --size <DATA SIZE>
-```
-
-### Code Readability
+## Code Readability Improvement
 
 ```sh
 PYTHONPATH="." python -u src/readability/readability.py --output <OUTPUT FILE>
@@ -94,6 +86,16 @@ Evaluation
 ```sh
 PYTHONPATH="." python -u src/readability/{count_comment|count_function|count_meaningful_var}.py --file <INPUT FILE>
 ```
+
+## Commongen
+
+* We use a hard version of commongen. The data is located in `data/prompts/commongen`. You can download the data by running the following commands:
+
+```sh
+python -u src/commongen/run.py cmd stair bubble team dryer puppy aliens cat 
+```
+
+
 
 ### General setup
 
@@ -125,7 +127,7 @@ python src/commongen/task_init.py
 python src/commongen/task_iterate.py
 ```
 
-You can also see these prompts in [docs](docs/) folder.
+You can also see these prompts on our [website](https://selfrefine.info).
 
 
 
