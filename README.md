@@ -2,7 +2,7 @@
 Self correcting loop for generation tasks
 
 
-![image](https://raw.githubusercontent.com/madaan/self-refine/main/docs/static/animation_static_end.gif)
+![image](https://raw.githubusercontent.com/madaan/self-refine/main/docs/static/images/autofb_animation_static.gif)
 
 ### Setup
 
