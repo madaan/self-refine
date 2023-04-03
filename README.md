@@ -8,7 +8,6 @@ _Can LLMs enhance their own output without our guidance? In some cases, yes! Wit
 ## [Website](https://selfrefine.info), [Paper](https://arxiv.org/pdf/2303.17651.pdf)
 
 
-
 <hr>
 
 ## Setup

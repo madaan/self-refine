@@ -3,14 +3,14 @@ from tqdm import tqdm
 from typing import List
 
 from src.commongen.task_init import CommongenTaskInit
-from src.commongen.task_iterate_v1 import CommongenTaskIterate
-from src.commongen.feedback_v1 import CommongenFeedback
+from src.commongen.task_iterate import CommongenTaskIterate
+from src.commongen.feedback import CommongenFeedback
 from src.utils import retry_parse_fail_prone_cmd
 
 CODEX = "code-davinci-002"
 GPT3 = "text-davinci-003"
 CHATGPT = "gpt-3.5-turbo"
-ENGINE = CHATGPT
+ENGINE = GPT3
 
 
 @retry_parse_fail_prone_cmd
@@ -23,12 +23,12 @@ def autofb_commongen(concepts: List[str], max_attempts: int) -> str:
 
     # getting feedback
     task_feedback = CommongenFeedback(
-        engine=ENGINE, prompt_examples="data/prompt/commongen/feedback.v1.jsonl"
+        engine=ENGINE, prompt_examples="data/prompt/commongen/feedback.jsonl"
     )
 
     # iteratively improving the sentence
     task_iterate = CommongenTaskIterate(
-        engine=ENGINE, prompt_examples="data/prompt/commongen/iterate.v1.jsonl"
+        engine=ENGINE, prompt_examples="data/prompt/commongen/iterate.jsonl"
     )
 
     # Initialize the task
