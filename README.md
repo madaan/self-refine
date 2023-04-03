@@ -1,11 +1,11 @@
 # Self-Refine: Iterative Refinement with Self-Feedback
 
-### Can LLMs enhance their own output without our guidance? In some cases, yes! With [Self-Refine](https://arxiv.org/pdf/2303.17651.pdf), LLMs can generate feedback on their work, use it to improve the output, and repeat this process.
+_Can LLMs enhance their own output without our guidance? In some cases, yes! With Self-Refine, LLMs can generate feedback on their work, use it to improve the output, and repeat this process._
 
 ![image](https://raw.githubusercontent.com/madaan/self-refine/main/docs/static/images/autofb_animation_static.gif)
 
 
-## [website](https://selfrefine.info), [paper](https://arxiv.org/pdf/2303.17651.pdf)
+## [Website](https://selfrefine.info), [Paper](https://arxiv.org/pdf/2303.17651.pdf)
 
 
 
