@@ -38,6 +38,17 @@
     <script src="https://d3js.org/d3.v4.js"></script>
     <!-- <script src="./static/js/results.js"></script> -->
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+  var gifElement = document.getElementById('animatedGif');
+  var gifDuration = 16000; // Replace this value with the actual duration of your GIF in milliseconds.
+
+  setTimeout(function () {
+    gifElement.src = 'https://raw.githubusercontent.com/madaan/self-refine/main/docs/static/images/autofb_static.png';
+  }, gifDuration);
+});
+
+    </script>
     <!--solution from https://stackoverflow.com/questions/23018619/make-text-in-select-element-wrap-when-too-long-->
     <style>
         .long_opt {
@@ -208,8 +219,8 @@
                     works with a single LLM.
                 </div>
                 <figure class="image is-8by6">
-                    <img src="https://raw.githubusercontent.com/madaan/self-refine/main/docs/static/images/autofb_animation_static.gif">
-                </figure>
+                    <img id="animatedGif" src="https://raw.githubusercontent.com/madaan/self-refine/main/docs/static/images/autofb_animation_static.gif">
+                  </figure>
                 <h2 class="subtitle has-text-centered">
                     <span class="pal">Self-Refine</span> iteratively improves outputs from LLMs
                     through a process of iterative creation with feedback
