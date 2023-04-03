@@ -69,12 +69,17 @@ python -u src/acronym/run.py "Using language models of code for few-shot commons
 * Total score: 21/25
 ```
 
+<hr>
+
+
 ## Dialogue Response generation
 
 ```sh
 PYTHONPATH="." python -u src/responsegen/run.py --output <OUTPUT FILE> --size <DATA SIZE>
 ```
 Use size 0 for running on all test instances
+
+<hr>
 
 
 ## Code Readability Improvement
@@ -87,6 +92,10 @@ Evaluation
 PYTHONPATH="." python -u src/readability/{count_comment|count_function|count_meaningful_var}.py --file <INPUT FILE>
 ```
 
+
+<hr>
+
+
 ## Commongen
 
 * We use a hard version of commongen. The data is located in `data/prompts/commongen`. You can download the data by running the following commands:
@@ -94,6 +103,8 @@ PYTHONPATH="." python -u src/readability/{count_comment|count_function|count_mea
 ```sh
 python -u src/commongen/run.py cmd stair bubble team dryer puppy aliens cat 
 ```
+
+<hr>
 
 
 
