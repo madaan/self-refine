@@ -2,7 +2,7 @@
 
 _Can LLMs enhance their own output without our guidance? In some cases, yes! With Self-Refine, LLMs can generate feedback on their work, use it to improve the output, and repeat this process._
 
-![image](https://raw.githubusercontent.com/madaan/self-refine/main/docs/static/images/autofb_animation_static.gif)
+![image](https://raw.githubusercontent.com/madaan/self-refine/main/docs/static/images/autofb_animation.gif)
 
 
 ## [Website](https://selfrefine.info), [Paper](https://arxiv.org/pdf/2303.17651.pdf)
@@ -12,7 +12,7 @@ _Can LLMs enhance their own output without our guidance? In some cases, yes! Wit
 
 ## Setup
 
-* We use prompt-lib for querying LLMs. You can install `prompt-lib` by running the following commands:
+* We use [prompt-lib](https://github.com/reasoning-machines/prompt-lib) for querying LLMs. You can install `prompt-lib` by running the following commands:
 
 ```sh
 !git clone https://github.com/reasoning-machines/prompt-lib
