@@ -203,10 +203,12 @@
         <div class="container is-max-desktop">
             <div class="hero-body">
                 <div class="content has-text-justified is-size-4">
-                    SELF-REFINE is a novel approach that allows LLMs to iteratively refine outputs and
+                    <p>How often does it happen that you give some input to a language model, and it generates an output, but something is not quite right? Perhaps the sentence it just generated doesn't flow well, or uses words that are fancier than you like. Getting things to work takes a few passes of back and forth. Wouldn't it be nice if ChatGPT could do some of these back-and-forths with itself and give you a better first version? We present Self-Refine, a method designed to do just that with large language models.</p>
+
+                    <p>Self-Refine is a novel approach that allows LLMs to iteratively refine outputs and
                     incorporate feedback along multiple dimensions to improve performance on diverse tasks. Unlike
                     prior work, it does not require supervised training data or reinforcement learning, and
-                    works with a single LLM.
+                    works with a single LLM.</p>
                 </div>
                 <figure class="image is-8by6">
                     <img id="animatedGif" src="https://raw.githubusercontent.com/madaan/self-refine/main/docs/static/images/autofb_animation_static.gif">
@@ -235,7 +237,7 @@
                             <figure class="image">
                                 <img src="static/images/fig2.png">
                             </figure>
-                            <figcaption>Given an input x, and an initial output y0, SELF-REFINE successively refines the
+                            <figcaption>Given an input x, and an initial output y0, Self-Refine successively refines the
                                 output in a FEEDBACK → REFINE → FEEDBACK loop. It is assumed that the initial output y0
                                 is produced by a generator model, which could be a specialized fine-tuned model or a
                                 few-shot prompted model.</figcaption>
@@ -291,8 +293,8 @@
                     <br>
                     <div class="box has-background-light">
                         <h2 class="title is-3">Adding a new task</h2>
-                        Adding a new task to SELF-REFINE is straightforward. The following code snippet shows the basic
-                        structure of the SELF-REFINE framework. The FEEDBACK and REFINE modules are task-dependent and
+                        Adding a new task to Self-Refine is straightforward. The following code snippet shows the basic
+                        structure of the Self-Refine framework. The FEEDBACK and REFINE modules are task-dependent and
                         can be implemented in a variety of ways. The is_refinement_sufficient function defines the
                         stopping criteria for the iterative process. The function is_refinement_sufficient is also
                         task-dependent and can be implemented in a variety of ways.
@@ -322,7 +324,7 @@ def self_refine(prompt: str) -> str:
                             <figure class="image">
                                 <img src="static/images/example1.png">
                             </figure>
-                            <figcaption>Overview of SELF-REFINE: given an initial output (left), FEEDBACK evaluates it
+                            <figcaption>Overview of Self-Refine: given an initial output (left), FEEDBACK evaluates it
                                 and generates actionable feedback required to correct it (center). The REFINE takes the
                                 feedback into account, and refines the output (right). For example, in the top row, an
                                 initial review with negative sentiment is first transformed into a positive one, then
@@ -349,7 +351,7 @@ def self_refine(prompt: str) -> str:
                         We conduct extensive experiments on 7 diverse tasks of review rewriting, acronym generation,
                         story generation, code rewriting, response generation, constrained generation, and toxicity
                         removal,
-                        demonstrating that SELF-REFINE outperforms direct generation from strong generators like GPT-3.5
+                        demonstrating that Self-Refine outperforms direct generation from strong generators like GPT-3.5
                         and even GPT-4 by at least 5% to more than 40% improvement
 
                     </p>
@@ -359,7 +361,7 @@ def self_refine(prompt: str) -> str:
                     <figure class="image is-64by64">
                         <img src="static/images/tasks.png">
                         <br>
-                        <caption>The diverse set of tasks to evaluate SELF-REFINE, along with their associated datasets
+                        <caption>The diverse set of tasks to evaluate Self-Refine, along with their associated datasets
                             and sizes.
                             On the right, we show an example of a single iteration of refinement of input from the
                             dataset x, previous
@@ -371,12 +373,12 @@ def self_refine(prompt: str) -> str:
 
                     <h2 class="title is-4">Main results</h2>
 
-                    <div>We show the relative improvements in performance across diverse tasks using the SELF-REFINE
+                    <div>We show the relative improvements in performance across diverse tasks using the Self-Refine
                         framework. The improvements are measured as the percentage increase in preference rate revealed
                         by human
                         evaluation (“Human Eval.”) or task-specific performance metrics. This demonstrates the
                         effectiveness of the
-                        iterative refinement process employed by SELF-REFINE in generating higher-quality outputs.</div>
+                        iterative refinement process employed by Self-Refine in generating higher-quality outputs.</div>
 
                     <!--row2, math reasoning-->
                     <figure class="image  has-text-centered">
@@ -387,7 +389,7 @@ def self_refine(prompt: str) -> str:
                     <hr>
 
                     <!--row3, algorithmic reasoning-->
-                    <div>Impact of Iterative Refinement SELF-REFINE aims to improve the output iterative following
+                    <div>Impact of Iterative Refinement Self-Refine aims to improve the output iterative following
                         cycles of
                         feedback and refinement. Does the output improve at each step? We analyze this question on three
                         datasets:
@@ -395,7 +397,7 @@ def self_refine(prompt: str) -> str:
                     <figure class="image  has-text-centered">
                         <img src="static/images/refinement.png">
                         <br>
-                        <caption><strong>SELF-REFINE iteratively improves outputs. The rate of Refinement represents the
+                        <caption><strong>Self-Refine iteratively improves outputs. The rate of Refinement represents the
                                 average improvement in percentage points per iteration, calculated from Iteration 0 to
                                 Iteration 2</strong></caption>
                     </figure>
