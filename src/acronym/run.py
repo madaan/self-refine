@@ -1,11 +1,5 @@
 import re
-from typing import Any, Dict, List
 import pandas as pd
-from tqdm import tqdm
-from pandarallel import pandarallel
-import multiprocessing
-
-pandarallel.initialize(progress_bar=True, nb_workers=25)
 
 
 from src.acronym.task_init import AcronymGenTaskInit
@@ -17,7 +11,9 @@ CODEX = "code-davinci-002"
 GPT3 = "text-davinci-003"
 CHAT_GPT = "gpt-3.5-turbo"
 GPT4 = "gpt-4"
-ENGINE = GPT4
+
+
+ENGINE = CHAT_GPT
 
 @retry_parse_fail_prone_cmd
 def iterative_acronym(title: str, max_attempts: int) -> str:
@@ -95,7 +91,7 @@ def run_over_titles(titles_file: str, max_attempts: int, outfile: str):
 
 
     data = pd.read_csv(titles_file, sep="\t")
-    data['generated_acronym'] = data['title'].parallel_apply(_parse_results)
+    data['generated_acronym'] = data['title'].apply(_parse_results)
         
     data.to_json(outfile, orient="records", lines=True)
 
