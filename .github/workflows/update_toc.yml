@@ -11,9 +11,13 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.TOC_UPDATE_TOKEN }}  # Use the PAT for authentication
+
     - name: Update ToC
       uses: technote-space/toc-generator@v4
       with:
         INSERT_TO: README.md
         BASE_BRANCH: main 
         COMMIT_MSG: 'chore: update TOC'
+        GITHUB_TOKEN: ${{ secrets.TOC_UPDATE_TOKEN }}  # Use the PAT for authentication
