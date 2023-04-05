@@ -10,9 +10,20 @@ _With Self-Refine, LLMs can generate feedback on their work, use it to improve t
 
 ## Table of Contents
 
-<!-- START doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
 
-<!-- END doctoc -->
+- [Setup](#setup)
+- [Getting Started with Acronym Generation](#getting-started-with-acronym-generation)
+- [Dialogue Response Generation](#dialogue-response-generation)
+- [Code Readability Improvement](#code-readability-improvement)
+- [Commongen](#commongen)
+- [GSM-8k](#gsm-8k)
+- [General setup](#general-setup)
+- [Citation](#citation)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 <hr>
 
