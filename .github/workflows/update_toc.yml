@@ -23,4 +23,6 @@ jobs:
         BASE_BRANCH: main 
         COMMIT_MSG: 'chore: update TOC'
         GITHUB_TOKEN: ${{ secrets.TOC_UPDATE_TOKEN }}  # Use the PAT for authentication
+      env:
+        TOC_TITLE: '## Table of Contents'
 
