@@ -12,7 +12,7 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
     - name: Update ToC
-      uses: technote-space/markdown-toc@v2
+      uses: technote-space/toc-generator@v4
       with:
         INSERT_TO: README.md
         BASE_BRANCH: main 

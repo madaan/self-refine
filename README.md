@@ -10,9 +10,9 @@ _With Self-Refine, LLMs can generate feedback on their work, use it to improve t
 
 ## Table of Contents
 
-<!-- toc -->
+<!-- START doctoc -->
 
-<!-- tocstop -->
+<!-- END doctoc -->
 
 <hr>
 
