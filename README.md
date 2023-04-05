@@ -5,8 +5,9 @@ _With Self-Refine, LLMs can generate feedback on their work, use it to improve t
 ![image](https://raw.githubusercontent.com/madaan/self-refine/main/docs/static/images/animation_oldstyle_oneloop.gif)
 
 
-- [Website](https://selfrefine.info)
-- [Paper](https://arxiv.org/pdf/2303.17651.pdf)
+<center><h4> <a href="https://selfrefine.info"> Website </a> | <a href="https://arxiv.org/pdf/2303.17651.pdf">Paper</a> </h4></center>
+<hr>
+
 
 
 
