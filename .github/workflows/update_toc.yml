@@ -1,0 +1,19 @@
+name: Update Table of Contents
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  update-toc:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Update ToC
+      uses: technote-space/markdown-toc@v2
+      with:
+        INSERT_TO: README.md
+        BASE_BRANCH: main 
+        COMMIT_MSG: 'chore: update TOC'

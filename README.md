@@ -83,6 +83,9 @@ Use size 0 for running on all test instances
 
 ## Code Readability Improvement
 
+
+* Note: Please unzip 'data/tasks/codeclean/code_readability/codenet-python-train.jsonl.zip' before running the following commands!
+
 ```sh
 PYTHONPATH="." python -u src/readability/readability.py --output <OUTPUT FILE>
 ```
@@ -105,6 +108,28 @@ python -u src/commongen/run.py cmd stair bubble team dryer puppy aliens cat
 
 <hr>
 
+
+## GSM-8k
+
+
+- To run the GSM-8k task:
+
+```sh
+python -u src/gsm/run.py 
+```
+
+- The outputs will be saved in `data/tasks/gsm/gsm_outputs.jsonl`
+
+
+- To evaluate the outputs:
+
+```sh
+python src/gsm/gsm_selfref_eval.py --path  data/tasks/gsm/gsm_outputs.jsonl
+```
+
+- The evaluation script will also generate a report (`data/tasks/gsm/gsm_outputs.jsonl.reports.txt`), that shows examples of wrong generations, feedback, and refined generations.
+
+<hr>
 
 
 ### General setup
