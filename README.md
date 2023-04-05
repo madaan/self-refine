@@ -8,7 +8,7 @@ _With Self-Refine, LLMs can generate feedback on their work, use it to improve t
 - [Website](https://selfrefine.info)
 - [Paper](https://arxiv.org/pdf/2303.17651.pdf)
 
-## Table of Contents
+
 
 <!-- START doctoc -->
 
