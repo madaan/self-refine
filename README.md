@@ -1,12 +1,18 @@
 # Self-Refine: Iterative Refinement with Self-Feedback
 
-_Can LLMs enhance their own output without our guidance? In some cases, yes! With Self-Refine, LLMs can generate feedback on their work, use it to improve the output, and repeat this process._
+_With Self-Refine, LLMs can generate feedback on their work, use it to improve the output, and repeat this process._
 
 ![image](https://raw.githubusercontent.com/madaan/self-refine/main/docs/static/images/animation_oldstyle_oneloop.gif)
 
 
-## [Website](https://selfrefine.info), [Paper](https://arxiv.org/pdf/2303.17651.pdf)
+- [Website](https://selfrefine.info)
+- [Paper](https://arxiv.org/pdf/2303.17651.pdf)
 
+## Table of Contents
+
+<!-- toc -->
+
+<!-- tocstop -->
 
 <hr>
 
@@ -25,7 +31,7 @@ Depending on your default settings, you may want to use the following to set a P
 export PYTHONPATH=".:../:.:src:../:../../:.:prompt-lib"
 ```
 
-## Getting Started with iterative acronym generation
+## Getting Started with Acronym Generation
 
 
 ```sh
@@ -37,7 +43,7 @@ python -u src/acronym/run.py "Using language models of code for few-shot commons
 
 
 
-```
+```swift
 0 INIT> Using language models of code for few-shot commonsense
 
 0 GEN> CLoCK
@@ -71,12 +77,13 @@ python -u src/acronym/run.py "Using language models of code for few-shot commons
 <hr>
 
 
-## Dialogue Response generation
+## Dialogue Response Generation
 
 ```sh
 PYTHONPATH="." python -u src/responsegen/run.py --output <OUTPUT FILE> --size <DATA SIZE>
 ```
-Use size 0 for running on all test instances
+
+- Use size 0 for running on all test instances
 
 <hr>
 
@@ -86,10 +93,12 @@ Use size 0 for running on all test instances
 
 * Note: Please unzip 'data/tasks/codeclean/code_readability/codenet-python-train.jsonl.zip' before running the following commands!
 
+- Running:
 ```sh
 PYTHONPATH="." python -u src/readability/readability.py --output <OUTPUT FILE>
 ```
-Evaluation
+
+- Evaluation:
 ```sh
 PYTHONPATH="." python -u src/readability/{count_comment|count_function|count_meaningful_var}.py --file <INPUT FILE>
 ```
@@ -127,38 +136,40 @@ python -u src/gsm/run.py
 python src/gsm/gsm_selfref_eval.py --path  data/tasks/gsm/gsm_outputs.jsonl
 ```
 
-- The evaluation script will also generate a report (`data/tasks/gsm/gsm_outputs.jsonl.reports.txt`), that shows examples of wrong generations, feedback, and refined generations.
+- The evaluation script will also generate a report (`data/tasks/gsm/gsm_outputs.jsonl.reports.txt`) showing examples of wrong generations, feedback, and refined feedback generations.
 
 <hr>
 
 
-### General setup
+## General setup
 
 * Each task has three different types of prompts:
 
-1. Init prompt: used to initialize the task.
-2. Feedback prompt: used to get feedback from the model on the intermediate results.
-3. Iterate prompt: used to get the next iteration from the model, based on the feedback.
+1. `Init`: used to initialize the task. This is how the initial output is generated.
 
-Every task has a `run.py` that initializes the prompts and runs the task.
+2. `Feedback`: used to get feedback from the model on the intermediate results.
+
+3. `Iterate`: used to get the next iteration from the model, based on the feedback.
+
+* Every task has a `run.py` that initializes the prompts and runs the task.
 
 * As an example, the prompts for commongen are as follows:
 
 1. Init prompt:
 
-```
+```sh
 python src/commongen/task_init.py
 ```
 
 2. Feedback prompt:
 
-```
+```sh
  python src/commongen/feedback.py
 ```
 
 3. Iterate prompt:
 
-```
+```sh
 python src/commongen/task_iterate.py
 ```
 
@@ -169,7 +180,7 @@ You can also see these prompts on our [website](https://selfrefine.info).
 
 ## Citation
 
-```
+```sql
 @misc{madaan2023selfrefine,
       title={Self-Refine: Iterative Refinement with Self-Feedback}, 
       author={Aman Madaan and Niket Tandon and Prakhar Gupta and Skyler Hallinan and Luyu Gao and Sarah Wiegreffe and Uri Alon and Nouha Dziri and Shrimai Prabhumoye and Yiming Yang and Sean Welleck and Bodhisattwa Prasad Majumder and Shashank Gupta and Amir Yazdanbakhsh and Peter Clark},
@@ -181,18 +192,13 @@ You can also see these prompts on our [website](https://selfrefine.info).
 ```
 
 ```mermaid
-
-flowchart  LR
-
-Generator -->|initializes|Unrefined
-
-Critic_1 --> Critique_fb
-... --> Critique_fb
-Critic_k --> Critique_fb
-
-Critique_fb --> Unrefined(output\nto refine) 
-Unrefined -->  Refiner
-
-Refiner --> |R: y_t, x, fb| Refined\noutput
-Refined\noutput --> |stopping criteria\nnot met|Unrefined
+flowchart LR
+    Generator -->|Initializes| Unrefined
+    Critic_1 --> Critique_fb
+    ... --> Critique_fb
+    Critic_k --> Critique_fb
+    Critique_fb --> Unrefined{Output to Refine}
+    Unrefined --> Refiner
+    Refiner --> |R: y_t, x, fb| Refined_Output{Refined Output}
+    Refined_Output --> |Stopping Criteria Not Met| Unrefined
 ```
