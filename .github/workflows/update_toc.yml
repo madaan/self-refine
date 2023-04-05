@@ -3,7 +3,9 @@ name: Update Table of Contents
 on:
   push:
     branches:
-      - main  
+      - main
+  workflow_dispatch:
+
 
 jobs:
   update-toc:
@@ -21,3 +23,4 @@ jobs:
         BASE_BRANCH: main 
         COMMIT_MSG: 'chore: update TOC'
         GITHUB_TOKEN: ${{ secrets.TOC_UPDATE_TOKEN }}  # Use the PAT for authentication
+
