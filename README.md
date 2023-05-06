@@ -33,8 +33,8 @@ _With Self-Refine, LLMs can generate feedback on their work, use it to improve t
 * We use [prompt-lib](https://github.com/reasoning-machines/prompt-lib) for querying LLMs. You can install `prompt-lib` by running the following commands:
 
 ```sh
-!git clone https://github.com/reasoning-machines/prompt-lib
-!pip install prompt-lib/
+git clone https://github.com/reasoning-machines/prompt-lib
+pip install prompt-lib/
 ```
 
 Depending on your default settings, you may want to use the following to set a PYTHONPATH:
