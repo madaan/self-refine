@@ -121,7 +121,7 @@ PYTHONPATH="." python -u src/readability/{count_comment|count_function|count_mea
 
 ## Commongen
 
-* We use a hard version of commongen. The data is located in `data/prompts/commongen`. You can download the data by running the following commands:
+* We use a hard version of commongen. The data is located in `data/prompt/commongen`. You can download the data by running the following commands:
 
 ```sh
 python -u src/commongen/run.py cmd stair bubble team dryer puppy aliens cat 
