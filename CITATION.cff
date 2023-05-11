@@ -1,0 +1,8 @@
+@misc{madaan2023selfrefine,
+      title={Self-Refine: Iterative Refinement with Self-Feedback}, 
+      author={Aman Madaan and Niket Tandon and Prakhar Gupta and Skyler Hallinan and Luyu Gao and Sarah Wiegreffe and Uri Alon and Nouha Dziri and Shrimai Prabhumoye and Yiming Yang and Sean Welleck and Bodhisattwa Prasad Majumder and Shashank Gupta and Amir Yazdanbakhsh and Peter Clark},
+      year={2023},
+      eprint={2303.17651},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
