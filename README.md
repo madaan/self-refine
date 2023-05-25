@@ -21,6 +21,8 @@ _With Self-Refine, LLMs can generate feedback on their work, use it to improve t
 - [Code Readability Improvement](#code-readability-improvement)
 - [Commongen](#commongen)
 - [GSM-8k](#gsm-8k)
+- [Yelp](#yelp)
+- [PIE](#pie)
 - [General setup](#general-setup)
 - [Citation](#citation)
 
