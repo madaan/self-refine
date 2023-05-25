@@ -1,0 +1,105 @@
+a, b = input().split()
+n = int(a + b)
+
+flag = False
+for i in range(n):
+    if i ** 2 == n:
+        flag = True
+        break
+
+print('Yes' if flag else 'No')
+
+# Improved version:
+
+a, b = input().split()
+n = int(a + b)
+
+flag = False
+i = 0
+while i * i <= n:
+    if i * i == n:
+        flag = True
+        break
+    i += 1
+
+print('Yes' if flag else 'No')
+
+### END ###
+
+def main():
+    N, *A = map(int, open(0).read().split())
+    remaining = 0
+    cur = 0  # current index
+    for target in range(1, N + 1):
+        be_kept = False
+        for i in range(cur, N):
+            if A[i] == target:
+                remaining += 1
+                cur = i + 1
+                be_kept = True
+                break
+        if not be_kept:
+            break
+    print(N - remaining if remaining else -1)
+
+# Improved version:
+
+def main():
+    N, *A = map(int, open(0).read().split())
+    remaining = 0
+    target = 1
+    for i in A:
+        if i == target:
+            remaining += 1
+            target += 1
+    print(N - remaining if remaining else -1)
+
+
+if __name__ == '__main__':
+    main()
+
+### END ###
+
+import numpy as np
+
+N = int(input())
+n=int(np.sqrt(N))
+print(n**2)
+
+
+# Improved version:
+
+N = int(input())
+n = int(N**0.5) 
+print(n**2)
+
+### END ###
+
+import numpy as np
+A = np.arange(1<<27,dtype=np.int32)
+
+
+a,b = map(int,input().split())
+if (a-b) % 2 == 0:
+  print((a+b)//2)
+else:
+  print('IMPOSSIBLE')
+
+# Improved version:
+
+import sys
+read = sys.stdin.buffer.read
+readline = sys.stdin.buffer.readline
+readlines = sys.stdin.buffer.readlines
+
+A,B = map(int,read().split())
+
+q,r = divmod(A+B,2)
+
+if r == 1:
+    print('IMPOSSIBLE')
+else:
+    print(q)
+
+### END ###
+
