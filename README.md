@@ -153,6 +153,33 @@ python src/gsm/gsm_selfref_eval.py --path  data/tasks/gsm/gsm_outputs.jsonl
 <hr>
 
 
+
+## Yelp
+
+- To run the Yelp task:
+
+```sh
+python -u src/sentiment_transfer_sr/run.py data/tasks/yelp/yelp-extreme.jso
+nl 4 none
+```
+
+
+- The outputs will be saved in `data/tasks/yelp/`
+
+
+<hr>
+
+## PIE
+
+- To run the PIE task:
+
+```sh
+python -u src/pie/run.py --slow_programs_file data/tasks/pie/codenet-python-test-1k.jsonl --max_attempts 4 --outfile data/tasks/pie/output --feedback_type rich
+```
+
+
+<hr>
+
 ## General setup
 
 * Each task has three different types of prompts:
