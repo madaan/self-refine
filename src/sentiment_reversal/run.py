@@ -6,10 +6,10 @@ import multiprocessing
 
 pandarallel.initialize(progress_bar=True, nb_workers=1)
 
-from src.sentiment_transfer_sr.task_init import SentimentTransferTaskInit
-from src.sentiment_transfer_sr.task_iterate import SentimentTransferTaskIterate
-from src.sentiment_transfer_sr.measure import SentimentTransferMeasurement
-from src.sentiment_transfer_sr.feedback import SentimentTransferFeedback
+from src.sentiment_reversal.task_init import SentimentTransferTaskInit
+from src.sentiment_reversal.task_iterate import SentimentTransferTaskIterate
+from src.sentiment_reversal.measure import SentimentTransferMeasurement
+from src.sentiment_reversal.feedback import SentimentTransferFeedback
 from src.utils import retry_parse_fail_prone_cmd
 
 CODEX = "code-davinci-002"
