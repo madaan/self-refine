@@ -1,6 +1,6 @@
 # Instructions for evaluating runtime for PIE experiments
 
-TLDR: From the self-refine outputs, create a flattened version of the outputs, and then use the PIE repo to evaluate the runtime and get a report. Parse the report using `src/pie/pie_eval.py`.
+*TLDR: From the self-refine outputs, create a flattened version of the outputs, and then use the PIE repo to evaluate the runtime and get a report. Parse the report using `src/pie/pie_eval.py`.*
 
 1. **Step 1** (construct yaml): For evaluating runtime for PIE experiments, we need a yaml file that contains information about the dataset, the model outputs, and the reference file. Note that self-refine generates outputs in a slightly different format. While Self-Refine generates the outputs in an array (one version per refinement step), the evaluation requires the program to be present in a single column as a script. You can optionally use [https://github.com/madaan/self-refine/tree/main/src/pie](prep_for_pie_eval.py) for this. `prep_for_pie_eval.py` creates a single file where the output from the i^th step is present in the `attempt_i_code` column. The following is an example for evaluating the initial output (`y0`).
 
