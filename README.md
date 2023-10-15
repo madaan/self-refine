@@ -179,6 +179,7 @@ nl 4 none
 python -u src/pie/run.py --slow_programs_file data/tasks/pie/codenet-python-test-1k.jsonl --max_attempts 4 --outfile data/tasks/pie/output --feedback_type rich
 ```
 
+- For evaluation details, please see [docs/pie_eval.md](docs/pie_eval.md).
 
 <hr>
 
