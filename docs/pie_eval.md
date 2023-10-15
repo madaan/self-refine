@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 # Instructions for evaluating runtime for PIE experiments
 
 1. **Step 1** (construct yaml): For evaluating runtime for PIE experiments, we need a yaml file that contains information about the dataset, the model outputs, and the reference file. Note that self-refine generates outputs in a slightly different format. While Self-Refine generates the outputs in an array (one version per refinement step), the evaluation requires the program to be present in a single column as a script. You can optionally use `prep_for_pie_eval.py` for this. `prep_for_pie_eval.py` creates a single file where the output from the i^th step is present in the `attempt_i_code` column. The following is an example for evaluating the initial output (`y0`).
-=======
-### Instructions for evaluating runtime for PIE experiments
-
-- Step 1 (construct yaml): For evaluating runtime for PIE experiments, we need a yaml file that contains information about the dataset, the model outputs, and the reference file. Note that self-refine generates outputs in a slightly different format. While Self-Refine generates the outputs in an array (one version per refinement step), the evaluation requires the program to be present in a single column as a script. You can optionally use `prep_for_pie_eval.py` for this. `prep_for_pie_eval.py` creates a single file where the output from the i^th step is present in the `attempt_i_code` column. The following is an example for evaluating the initial output (`y0`).
->>>>>>> 5d9574e32a5d9b853adf0e8c48685b8940586045
 
 - See `data/tasks/pie/gpt4_outputs_self_refine.jsonl` and `data/tasks/pie/gpt4_outputs_flattened.jsonl` for examples of the outputs from self-refine and the flattened version, respectively.
 
