@@ -1,6 +1,6 @@
 # Instructions for evaluating runtime for PIE experiments
 
-1. **Step 1** (construct yaml): For evaluating runtime for PIE experiments, we need a yaml file that contains information about the dataset, the model outputs, and the reference file. Note that self-refine generates outputs in a slightly different format. While Self-Refine generates the outputs in an array (one version per refinement step), the evaluation requires the program to be present in a single column as a script. You can optionally use `prep_for_pie_eval.py` for this. `prep_for_pie_eval.py` creates a single file where the output from the i^th step is present in the `attempt_i_code` column. The following is an example for evaluating the initial output (`y0`).
+1. **Step 1** (construct yaml): For evaluating runtime for PIE experiments, we need a yaml file that contains information about the dataset, the model outputs, and the reference file. Note that self-refine generates outputs in a slightly different format. While Self-Refine generates the outputs in an array (one version per refinement step), the evaluation requires the program to be present in a single column as a script. You can optionally use [https://github.com/madaan/self-refine/tree/main/src/pie](prep_for_pie_eval.py) for this. `prep_for_pie_eval.py` creates a single file where the output from the i^th step is present in the `attempt_i_code` column. The following is an example for evaluating the initial output (`y0`).
 
 - See `data/tasks/pie/gpt4_outputs_self_refine.jsonl` and `data/tasks/pie/gpt4_outputs_flattened.jsonl` for examples of the outputs from self-refine and the flattened version, respectively.
 
@@ -25,7 +25,7 @@ model_generated_outputs_path: "where are the outputs we want to evaluate?"
 output_report_file_path: "Where should the report file be generated?"
 ```
 
-- Please see the [pie repo](https://github.com/madaan/pie-perf/blob/main/README.md#evaluating-your-method) for more details.
+- Please see the [pie repo](https://github.com/madaan/pie-perf/blob/main/README.md#evaluating-your-method) for more details. Note that we are using generated test cases, which are also available at [pie repo](https://github.com/madaan/pie-perf/blob/main/README.md#evaluating-your-method).
 
 
 2. **Step 2** (run pie eval)
