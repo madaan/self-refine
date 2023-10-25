@@ -1,6 +1,8 @@
 import pathlib
 from tqdm import tqdm
 from typing import List
+import sys
+import pandas as pd
 
 from src.commongen.task_init import CommongenTaskInit
 from src.commongen.task_iterate import CommongenTaskIterate
@@ -9,8 +11,8 @@ from src.utils import retry_parse_fail_prone_cmd
 
 CODEX = "code-davinci-002"
 GPT3 = "text-davinci-003"
-CHATGPT = "gpt-3.5-turbo"
-ENGINE = GPT3
+CHATGPT = "gpt-3.5-turbo-0613"
+ENGINE = CHATGPT
 
 
 @retry_parse_fail_prone_cmd
@@ -100,11 +102,12 @@ def run_iter(inputs_file_path: str, max_attempts: int = 4):
             continue
         try:
             sent_to_fb = autofb_commongen(concepts=row["concepts"], max_attempts=max_attempts)
-            test_df.loc[i, "sent_to_fb"] = sent_to_fb
-            test_df.loc[i, "status"] = "success"
+            test_df.at[i, "sent_to_fb"] = sent_to_fb
+            test_df.at[i, "status"] = "success"
         except Exception as e:
-            test_df.loc[i, "sent_to_fb"] = str(e)
-            test_df.loc[i, "status"] = "error"
+            # raise e
+            test_df.at[i, "sent_to_fb"] = str(e)
+            test_df.at[i, "status"] = "error"
 
     output_path = inputs_file_path + (".iter.out" if not is_rerun else ".v0")
     version = 0
@@ -154,7 +157,6 @@ def run_multi_sample(inputs_file_path: str, n_samples: int = 4):
             test_df.loc[i, "outputs"] = outputs
             test_df.loc[i, "status"] = "success"
         except Exception as e:
-            raise e
             test_df.loc[i, "outputs"] = str(e)
             test_df.loc[i, "status"] = "error"
     print(test_df)
@@ -168,8 +170,7 @@ def run_multi_sample(inputs_file_path: str, n_samples: int = 4):
 
 
 if __name__ == "__main__":
-    import sys
-    import pandas as pd
+
 
     if sys.argv[1] == "cmd":
         run_cmd()

@@ -6,7 +6,7 @@ from prompt_lib.backends import openai_api
 
 
 class CommongenTaskInit(Prompt):
-    def __init__(self, prompt_examples: str, engine: str) -> None:
+    def __init__(self, prompt_examples: str, engine: str, temperature: float = 0.0) -> None:
         super().__init__(
             question_prefix="Concepts: ",
             answer_prefix="Sentence: ",
@@ -14,6 +14,7 @@ class CommongenTaskInit(Prompt):
             inter_example_sep="\n\n###\n\n",
         )
         self.engine = engine
+        self.temperature = temperature
         self.setup_prompt_from_examples_file(prompt_examples)
 
     def setup_prompt_from_examples_file(self, examples_path: str) -> str:
@@ -35,19 +36,28 @@ Sentence: {sentence}"""
         return query
 
     def __call__(self, concepts: List[str]) -> str:
-        generation_query = self.make_query(concepts) + "\nDo your best! It's okay if the sentence is not coherent.\n"
+        generation_query = self.make_query(concepts)
+        
+        generation_query = f"""{self.make_query(concepts)}
+Do your best! It's okay if the sentence is not coherent.
 
+Sentence:"""
+        
         output = openai_api.OpenaiAPIWrapper.call(
             prompt=generation_query,
             engine=self.engine,
             max_tokens=300,
             stop_token="###",
-            temperature=0.7,
+            temperature=self.temperature,
         )
 
         generated_sent = openai_api.OpenaiAPIWrapper.get_first_response(output)
-        print(generated_sent)
-        generated_sent = generated_sent.split(self.answer_prefix)[1].replace("#", "").strip()
+        if self.answer_prefix in generated_sent:
+            generated_sent = generated_sent.split(self.answer_prefix)[1].strip()
+        
+        if "#" in generated_sent:
+            generated_sent = generated_sent.replace("#", "").strip()
+
         return generated_sent.strip()
 
 

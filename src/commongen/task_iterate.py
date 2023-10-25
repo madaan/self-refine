@@ -1,6 +1,7 @@
 import re
 from typing import Dict, List
 from src.utils import Prompt
+import pandas as pd
 
 from prompt_lib.backends import openai_api
 
@@ -23,7 +24,7 @@ Okay, impove the sentence using the feedback:
 """
 
 class CommongenTaskIterate(Prompt):
-    def __init__(self, engine: str, prompt_examples: str) -> None:
+    def __init__(self, engine: str, prompt_examples: str, temperature: float = 0.0) -> None:
         super().__init__(
             question_prefix="",
             answer_prefix="",
@@ -32,10 +33,11 @@ class CommongenTaskIterate(Prompt):
         )
         self.engine = engine
         self.count = 0
+        self.temperature = temperature
         self.prompt = self.make_prompt(prompt_examples=prompt_examples)
 
     def make_prompt(self, prompt_examples: str) -> str:
-        import pandas as pd
+        
 
         prompt_examples = pd.read_json(prompt_examples, orient="records", lines=True)
 
@@ -78,23 +80,20 @@ class CommongenTaskIterate(Prompt):
     
         transfer_query = self.make_query(concepts=concepts, sent_to_fb=sent_to_fb)
         self.count += 1
-
+    
         output = openai_api.OpenaiAPIWrapper.call(
             prompt=transfer_query,
             engine=self.engine,
             max_tokens=300,
             stop_token=self.inter_example_sep,
-            temperature=0.7,
+            temperature=self.temperature,
         )
         response = openai_api.OpenaiAPIWrapper.get_first_response(output)
 
-        print("######")
-        print()
-        print("------")
-        print(response)
-        print("------")
-
-        response = re.search("Sentence: (.*)", response).group(1).strip().split("\n")[0].strip()
+        response = re.search("Sentence: (.*)", response)
+        
+        if response:
+            response = response.group(1).strip().split("\n")[0].strip()
 
         return response.strip()
 
@@ -115,7 +114,7 @@ class CommongenTaskIterate(Prompt):
 
 if __name__ == "__main__":
     obj = CommongenTaskIterate(
-        prompt_examples="data/prompt/commongen/iterate.v1.jsonl", engine="whatever"
+        prompt_examples="data/prompt/commongen/iterate.jsonl", engine="whatever"
     )
     print(obj.prompt)
     # print(obj.make_query(concepts=["a", "b"], sent_to_fb=[{"sentence": "a", "feedback": "a"}, {"sentence": "b", "feedback": "d"}]))

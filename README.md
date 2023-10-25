@@ -45,6 +45,11 @@ Depending on your default settings, you may want to use the following to set a P
 export PYTHONPATH=".:../:.:src:../:../../:.:prompt-lib"
 ```
 
+- There are some additional dependencies present in `requirements.txt`.
+
+- After installing spacy, you may need to run `python -m spacy download en_core_web_sm`.
+
+
 ## Getting Started with Acronym Generation
 
 
@@ -129,7 +134,24 @@ PYTHONPATH="." python -u src/readability/{count_comment|count_function|count_mea
 python -u src/commongen/run.py cmd stair bubble team dryer puppy aliens cat 
 ```
 
+### Running inference over the test set
+
+1. Run inference:
+
+```sh
+python -u src/commongen/run.py batch-iter data/prompt/commongen/commongen_hard.jsonl
+```
+
+2. Run evaluation:
+
+```sh
+python -u src/commongen/constrained_gen_eval.py --path data/prompt/commongen/commongen_hard.jsonl.iter.out
+```
+
+
+
 <hr>
+
 
 
 ## GSM-8k
