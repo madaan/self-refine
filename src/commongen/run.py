@@ -12,7 +12,8 @@ from src.utils import retry_parse_fail_prone_cmd
 CODEX = "code-davinci-002"
 GPT3 = "text-davinci-003"
 CHATGPT = "gpt-3.5-turbo-0613"
-ENGINE = CHATGPT
+GPT4 = "gpt-4-0613"
+ENGINE = GPT3
 
 
 @retry_parse_fail_prone_cmd
@@ -109,10 +110,10 @@ def run_iter(inputs_file_path: str, max_attempts: int = 4):
             test_df.at[i, "sent_to_fb"] = str(e)
             test_df.at[i, "status"] = "error"
 
-    output_path = inputs_file_path + (".iter.out" if not is_rerun else ".v0")
+    output_path = inputs_file_path + f".{ENGINE}" + (".iter.out" if not is_rerun else ".v0")
     version = 0
     while pathlib.Path(output_path).exists():
-        output_path = output_path + f".v{version}"
+        output_path = f"{output_path}.{ENGINE}.v{version}"
         version += 1
 
     test_df.to_json(output_path, orient="records", lines=True)
