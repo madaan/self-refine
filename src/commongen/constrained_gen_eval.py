@@ -6,6 +6,18 @@ import time
 from tqdm import tqdm
 import pandas as pd
 import random
+
+import os
+from collections import Counter
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+# check if orgainization is set
+
+if os.getenv("OPENAI_ORG") is not None:
+    openai.organization = os.getenv("OPENAI_ORG")
+
+
 random.seed(42)
 
 

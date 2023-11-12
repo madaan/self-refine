@@ -148,7 +148,7 @@ python -u src/commongen/run.py batch-iter data/prompt/commongen/commongen_hard.j
 python -u src/commongen/constrained_gen_eval.py --path data/prompt/commongen/commongen_hard.jsonl.iter.out
 ```
 
-
+Please see `src/commongen/run.py` for more details on the hyperparameters.
 
 <hr>
 
