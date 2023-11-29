@@ -15,18 +15,17 @@ _With Self-Refine, LLMs can generate feedback on their work, use it to improve t
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [Self-Refine: Iterative Refinement with Self-Feedback](#self-refine-iterative-refinement-with-self-feedback)
-  - [Updates](#updates)
-  - [Setup](#setup)
-  - [Getting Started with Acronym Generation](#getting-started-with-acronym-generation)
-  - [Dialogue Response Generation](#dialogue-response-generation)
-  - [Code Readability Improvement](#code-readability-improvement)
-  - [Commongen](#commongen)
-  - [GSM-8k](#gsm-8k)
-  - [Yelp](#yelp)
-  - [PIE](#pie)
-  - [General setup](#general-setup)
-  - [Citation](#citation)
+- [Updates](#updates)
+- [Setup](#setup)
+- [Getting Started with Acronym Generation](#getting-started-with-acronym-generation)
+- [Dialogue Response Generation](#dialogue-response-generation)
+- [Code Readability Improvement](#code-readability-improvement)
+- [Commongen](#commongen)
+- [GSM-8k](#gsm-8k)
+- [Yelp](#yelp)
+- [PIE](#pie)
+- [General setup](#general-setup)
+- [Citation](#citation)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
