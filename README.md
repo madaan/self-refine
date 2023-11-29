@@ -15,17 +15,18 @@ _With Self-Refine, LLMs can generate feedback on their work, use it to improve t
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [Updates](#updates)
-- [Setup](#setup)
-- [Getting Started with Acronym Generation](#getting-started-with-acronym-generation)
-- [Dialogue Response Generation](#dialogue-response-generation)
-- [Code Readability Improvement](#code-readability-improvement)
-- [Commongen](#commongen)
-- [GSM-8k](#gsm-8k)
-- [Yelp](#yelp)
-- [PIE](#pie)
-- [General setup](#general-setup)
-- [Citation](#citation)
+- [Self-Refine: Iterative Refinement with Self-Feedback](#self-refine-iterative-refinement-with-self-feedback)
+  - [Updates](#updates)
+  - [Setup](#setup)
+  - [Getting Started with Acronym Generation](#getting-started-with-acronym-generation)
+  - [Dialogue Response Generation](#dialogue-response-generation)
+  - [Code Readability Improvement](#code-readability-improvement)
+  - [Commongen](#commongen)
+  - [GSM-8k](#gsm-8k)
+  - [Yelp](#yelp)
+  - [PIE](#pie)
+  - [General setup](#general-setup)
+  - [Citation](#citation)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -36,11 +37,16 @@ _With Self-Refine, LLMs can generate feedback on their work, use it to improve t
 - **Nov 2023**: Added [visual self-refine examples](docs/visual_self_refine_examples/) and [colabs](colabs/Visual-Self-Refine-GPT4V.ipynb). Use GPT4-V to write tikz code for diagrams, and improve them iteratively.
 
 <center>
-<p>
-  <img src="docs/visual_self_refine_examples/stokes__theorem.gif" alt="Visual Self-Refine Example 1" width="300" height="300" /> </p>
-  <p><img src="docs/visual_self_refine_examples/unicorn.gif" alt="Visual Self-Refine Example 2" width="300" height="300" />
-</p>
+  <p>
+    <strong>Stokes' Theorem</strong><br>
+    <img src="docs/visual_self_refine_examples/stokes__theorem.gif" alt="Visual Self-Refine Example 1" width="300" height="300" />
+  </p>
+  <p>
+    <strong>Unicorn</strong><br>
+    <img src="docs/visual_self_refine_examples/unicorn.gif" alt="Visual Self-Refine Example 2" width="300" height="300" />
+  </p>
 </center>
+
 
 
 ## Setup
