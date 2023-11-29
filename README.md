@@ -36,10 +36,12 @@ _With Self-Refine, LLMs can generate feedback on their work, use it to improve t
 
 - **Nov 2023**: Added [visual self-refine examples](docs/visual_self_refine_examples/) and [colabs](colabs/Visual-Self-Refine-GPT4V.ipynb). Use GPT4-V to write tikz code for diagrams, and improve them iteratively.
 
+<center>
 <p>
-  <img src="docs/visual_self_refine_examples/stokes__theorem.gif" alt="Visual Self-Refine Example 1" width="300" height="300" />
-  <img src="docs/visual_self_refine_examples/unicorn.gif" alt="Visual Self-Refine Example 2" width="300" height="300" />
+  <img src="docs/visual_self_refine_examples/stokes__theorem.gif" alt="Visual Self-Refine Example 1" width="300" height="300" /> </p>
+  <p><img src="docs/visual_self_refine_examples/unicorn.gif" alt="Visual Self-Refine Example 2" width="300" height="300" />
 </p>
+</center>
 
 
 ## Setup
