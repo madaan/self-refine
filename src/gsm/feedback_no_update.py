@@ -10,7 +10,7 @@ class GSMFeedback(Prompt):
             question_prefix="",
             answer_prefix="",
             intra_example_sep="\n\n",
-            inter_example_sep="\n\n### END ###n\n",
+            inter_example_sep="\n\n### END ###\n\n",
             engine = engine,
             temperature = temperature
         )
